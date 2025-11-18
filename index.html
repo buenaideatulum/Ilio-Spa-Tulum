@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILio SPA - Massage Tulum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage: #7a9b8e;
+            --dark-sage: #5a7b6e;
+            --cream: #e8e4dc;
+            --beige: #d4cfc7;
+            --dark-text: #2c3e37;
+            --light-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--cream);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(232, 228, 220, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--sage);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--sage);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background: linear-gradient(rgba(122, 155, 142, 0.3), rgba(122, 155, 142, 0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23d4cfc7" width="1200" height="800"/><path fill="%237a9b8e" opacity="0.1" d="M0,400 Q300,300 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark-text);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-sage);
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark-text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--sage);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: 2px solid var(--sage);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--sage);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(122, 155, 142, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--sage);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--sage);
+            margin: 1rem auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--beige) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        #servicios {
+            background-color: var(--beige);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .service-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-category h3 {
+            color: var(--sage);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--sage);
+            padding-bottom: 0.5rem;
+        }
+
+        .service-item {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            font-weight: bold;
+            color: var(--dark-text);
+            font-size: 1.1rem;
+        }
+
+        .service-details {
+            color: var(--dark-sage);
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(135deg, var(--sage), var(--beige));
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contacto {
+            background-color: var(--cream);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--beige);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            background: var(--sage);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: var(--sage);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-sage);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .services-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">ILIO SPA</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div>
+                <h1>ILio SPA</h1>
+                <p>Massage Tulum</p>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Encuentra tu equilibrio perfecto</p>
+                <a href="#contacto" class="btn">Reserva Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros">
+        <h2>Sobre Nosotros</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>En ILio SPA, creemos en el poder curativo del tacto y la conexión con la naturaleza. Ubicados en el corazón de Tulum, ofrecemos una experiencia única de bienestar y relajación.</p>
+                <p>Nuestro equipo de terapeutas certificados combina técnicas ancestrales con métodos modernos para brindarte tratamientos personalizados que nutren cuerpo, mente y espíritu.</p>
+                <p>Cada sesión es diseñada para transportarte a un estado de paz profunda, donde el tiempo se detiene y tu bienestar es nuestra prioridad.</p>
+            </div>
+            <div class="about-image">
+                🧘‍♀️
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-category">
+                <h3>Tratamientos Combinados</h3>
+                <div class="service-item">
+                    <div class="service-name">Body Scrub Massage</div>
+                    <div class="service-details">90 min - $2100</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Relaxing Massage with Facial</div>
+                    <div class="service-details">90 min - $2200</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Facial</div>
+                    <div class="service-details">50 min - $950</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Mud Massage</div>
+                    <div class="service-details">90 min - $2300</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Personalized Treatments</div>
+                    <div class="service-details">Consultar</div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3>Masajes Terapéuticos</h3>
+                <div class="service-item">
+                    <div class="service-name">Relaxing</div>
+                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Deep Tissue</div>
+                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Swedish</div>
+                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Aromatherapy</div>
+                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Prenatal</div>
+                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Sports</div>
+                    <div class="service-details">60 min $1450 - 90 min $1750</div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3>Terapias Especializadas</h3>
+                <div class="service-item">
+                    <div class="service-name">Reflexology</div>
+                    <div class="service-details">60 min $1500 - 90 min $1800</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Hot Stones</div>
+                    <div class="service-details">60 min $1550 - 90 min $1850</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Cupping</div>
+                    <div class="service-details">60 min $1550 - 90 min $1850</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Shiatsu</div>
+                    <div class="service-details">90 min - $1800</div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3>Tratamientos Exclusivos</h3>
+                <div class="service-item">
+                    <div class="service-name">Lymphatic Drainage</div>
+                    <div class="service-details">60 min $1450 - 90 min $1750</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-name">Hawaiian with Bamboo</div>
+                    <div class="service-details">60 min $1500 - 90 min $1800</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria">
+        <h2>Galería</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">🌿</div>
+            <div class="gallery-item">💆‍♀️</div>
+            <div class="gallery-item">🕯️</div>
+            <div class="gallery-item">🧖‍♀️</div>
+            <div class="gallery-item">🌺</div>
+            <div class="gallery-item">✨</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3 style="color: var(--sage); margin-bottom: 1.5rem;">Envíanos un mensaje</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Enviar</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <div class="info-item">
+                    <strong>📞 Teléfono</strong>
+                    <a href="tel:+529841681445" style="color: white; text-decoration: none;">+52 984 168 1445</a>
+                </div>
+                <div class="info-item">
+                    <strong>📧 Email</strong>
+                    <a href="mailto:iliomassagetulum@gmail.com" style="color: white; text-decoration: none;">iliomassagetulum@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <strong>📍 Ubicación</strong>
+                    Tulum, Quintana Roo, México
+                </div>
+                <div class="info-item">
+                    <strong>🕐 Horario</strong>
+                    Lunes a Domingo<br>
+                    9:00 AM - 8:00 PM
+                </div>
+                <div class="info-item">
+                    <strong>📱 Instagram</strong>
+                    <a href="https://instagram.com/iliomassagetulum" target="_blank" style="color: white;">@iliomassagetulum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ILio SPA - Massage Tulum. Todos los derechos reservados.</p>
+        <p style="margin-top: 1rem;">Diseñado con ❤️ para tu bienestar</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
