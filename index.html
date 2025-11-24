@@ -89,8 +89,11 @@
         .hero {
             margin-top: 80px;
             height: 90vh;
-            background: linear-gradient(rgba(122, 155, 142, 0.3), rgba(122, 155, 142, 0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23d4cfc7" width="1200" height="800"/><path fill="%237a9b8e" opacity="0.1" d="M0,400 Q300,300 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
+            /* 🔴 IMAGEN 1: FOTO PRINCIPAL DEL HERO */
+            /* Cambia 'hero.jpg' por la ruta de tu imagen */
+            /* Si usas URL de internet: url('https://tu-url.com/imagen.jpg') */
+            background: linear-gradient(rgba(122, 155, 142, 0.4), rgba(122, 155, 142, 0.4)), 
+                        url('hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -173,13 +176,12 @@
         .about-image {
             width: 100%;
             height: 400px;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--beige) 100%);
+            /* 🔴 IMAGEN 2: FOTO DE "SOBRE NOSOTROS" */
+            /* Cambia 'images/about.jpg' por la ruta de tu imagen */
+            background: url('images/about.jpg');
+            background-size: cover;
+            background-position: center;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
@@ -240,16 +242,12 @@
 
         .gallery-item {
             height: 250px;
-            background: linear-gradient(135deg, var(--sage), var(--beige));
+            background-size: cover;
+            background-position: center;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
         }
 
         .gallery-item:hover {
@@ -444,7 +442,7 @@
                 <p>Cada sesión es diseñada para transportarte a un estado de paz profunda, donde el tiempo se detiene y tu bienestar es nuestra prioridad.</p>
             </div>
             <div class="about-image">
-                🧘‍♀️
+                <!-- La imagen se pone en el CSS arriba, línea 188 -->
             </div>
         </div>
     </section>
@@ -543,12 +541,14 @@
     <section id="galeria">
         <h2>Galería</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">🌿</div>
-            <div class="gallery-item">💆‍♀️</div>
-            <div class="gallery-item">🕯️</div>
-            <div class="gallery-item">🧖‍♀️</div>
-            <div class="gallery-item">🌺</div>
-            <div class="gallery-item">✨</div>
+            <!-- 🔴 IMÁGENES 3-8: GALERÍA DE FOTOS -->
+            <!-- Cambia 'images/gallery1.jpg' etc. por las rutas de tus imágenes -->
+            <div class="gallery-item" style="background-image: url('images/gallery1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery3.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery4.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery5.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery6.jpg');"></div>
         </div>
     </section>
 
