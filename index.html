@@ -90,10 +90,10 @@
             margin-top: 80px;
             height: 90vh;
             /* 🔴 IMAGEN 1: FOTO PRINCIPAL DEL HERO */
-            /* Cambia 'hero.jpg' por la ruta de tu imagen */
+            /* Cambia 'images/hero.jpg' por la ruta de tu imagen */
             /* Si usas URL de internet: url('https://tu-url.com/imagen.jpg') */
             background: linear-gradient(rgba(122, 155, 142, 0.4), rgba(122, 155, 142, 0.4)), 
-                        url('hero.jpg');
+                        url('images/hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -177,8 +177,8 @@
             width: 100%;
             height: 400px;
             /* 🔴 IMAGEN 2: FOTO DE "SOBRE NOSOTROS" */
-            /* Cambia 'about.png' por la ruta de tu imagen */
-            background: url('about.png');
+            /* Cambia 'images/about.jpg' por la ruta de tu imagen */
+            background: url('images/about.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 20px;
@@ -213,12 +213,25 @@
 
         .service-item {
             margin-bottom: 1rem;
-            padding: 0.5rem 0;
+            padding: 1rem;
             border-bottom: 1px solid var(--beige);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 8px;
+        }
+
+        .service-item:hover {
+            background-color: var(--cream);
         }
 
         .service-item:last-child {
             border-bottom: none;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .service-name {
@@ -231,6 +244,32 @@
             color: var(--dark-sage);
             font-size: 0.95rem;
             margin-top: 0.3rem;
+        }
+
+        .service-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--dark-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            padding: 0;
+        }
+
+        .service-description.active {
+            max-height: 500px;
+            padding-top: 0.5rem;
+        }
+
+        .service-icon {
+            color: var(--sage);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .service-icon.active {
+            transform: rotate(180deg);
         }
 
         /* Gallery Section */
@@ -454,84 +493,232 @@
             <div class="service-category">
                 <h3>Tratamientos Combinados</h3>
                 <div class="service-item">
-                    <div class="service-name">Body Scrub Massage</div>
-                    <div class="service-details">90 min - $2100</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Body Scrub Massage</div>
+                            <div class="service-details">90 min - $2100</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Tratamiento que combina la eliminación de células muertas de la piel con técnicas de masaje para relajar el cuerpo, mejorar la circulación y dejar la piel suave y renovada.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Relaxing Massage with Facial</div>
-                    <div class="service-details">90 min - $2200</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Relaxing Massage with Facial</div>
+                            <div class="service-details">90 min - $2200</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        La combinación de un masaje corporal completo con un masaje facial ofrece un bienestar integral al relajar tanto el cuerpo como el rostro, mejorar la circulación, reducir la tensión muscular y promover una piel más luminosa.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Facial</div>
-                    <div class="service-details">50 min - $950</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Facial</div>
+                            <div class="service-details">50 min - $950</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Este tipo de facial incluye técnicas como la exfoliación para eliminar células muertas, la aplicación de productos con ingredientes naturales en la dermis para una hidratación profunda y rejuvenecimiento de la piel.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Mud Massage</div>
-                    <div class="service-details">90 min - $2300</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Mud Massage</div>
+                            <div class="service-details">90 min - $2300</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Combina técnicas de masaje con la aplicación de barro mineralizado y calentado para aliviar la tensión muscular, desintoxicar, nutrir la piel y promover la relajación profunda.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Personalized Treatments</div>
-                    <div class="service-details">Consultar</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Personalized Treatments</div>
+                            <div class="service-details">Consultar</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Diseñamos tratamientos personalizados según tus necesidades específicas, combinando diferentes técnicas para crear la experiencia perfecta de bienestar para ti.
+                    </div>
                 </div>
             </div>
 
             <div class="service-category">
                 <h3>Masajes Terapéuticos</h3>
                 <div class="service-item">
-                    <div class="service-name">Relaxing</div>
-                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Relaxing</div>
+                            <div class="service-details">60 min $1400 - 90 min $1700</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica suave de presión ligera con movimientos lentos para aliviar el estrés y la tensión muscular. Incluye uso de aceites esenciales y música para una profunda relajación corporal y mental.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Deep Tissue</div>
-                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Deep Tissue</div>
+                            <div class="service-details">60 min $1400 - 90 min $1700</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica de presión intensa y movimientos lentos y profundos, diseñada para alcanzar las capas musculares más profundas y el tejido conectivo. Ideal para aliviar el dolor crónico, la tensión muscular y la rigidez.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Swedish</div>
-                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Swedish</div>
+                            <div class="service-details">60 min $1400 - 90 min $1700</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica de terapia física que se enfoca en relajar los músculos y mejorar la circulación sanguínea mediante movimientos suaves y largos en dirección al corazón.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Aromatherapy</div>
-                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Aromatherapy</div>
+                            <div class="service-details">60 min $1400 - 90 min $1700</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Combina el toque terapéutico del masaje con los efectos relajantes y curativos de los aceites esenciales, ofreciendo beneficios como la reducción del estrés, la ansiedad y la tensión muscular.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Shiatsu</div>
-                    <div class="service-details">60 min $1400 - 90 min $1700</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Prenatal</div>
+                            <div class="service-details">60 min $1400 - 90 min $1700</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Terapia específica diseñada para mujeres embarazadas, realizada por un terapeuta capacitado que adapta técnicas suaves para aliviar dolores comunes como el de espalda, mejorar la circulación y reducir el estrés.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Sports</div>
-                    <div class="service-details">60 min $1450 - 90 min $1750</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Sports</div>
+                            <div class="service-details">60 min $1450 - 90 min $1750</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica de terapia manual profunda que utiliza compresiones, fricciones y amasamientos para relajar la musculatura, eliminar contracturas y aliviar la tensión muscular causada por el entrenamiento intenso.
+                    </div>
                 </div>
             </div>
 
             <div class="service-category">
                 <h3>Terapias Especializadas</h3>
                 <div class="service-item">
-                    <div class="service-name">Reflexology</div>
-                    <div class="service-details">60 min $1500 - 90 min $1800</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Reflexology</div>
+                            <div class="service-details">60 min $1500 - 90 min $1800</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica que consiste en aplicar presión en puntos específicos de los pies, las manos y las orejas para estimular el cuerpo y promover la relajación y el equilibrio.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Hot Stones</div>
-                    <div class="service-details">60 min $1550 - 90 min $1850</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Hot Stones</div>
+                            <div class="service-details">60 min $1550 - 90 min $1850</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Terapia relajante que combina técnicas manuales con piedras volcánicas calientes para liberar tensiones profundas, mejorar la circulación y equilibrar el sistema energético. Ideal para quienes buscan una descontracturación suave y una sensación de descanso profundo.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Cupping</div>
-                    <div class="service-details">60 min $1550 - 90 min $1850</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Cupping</div>
+                            <div class="service-details">60 min $1550 - 90 min $1850</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Terapia alternativa que consiste en aplicar ventosas en la piel para crear succión, lo que estimula la circulación sanguínea y linfática, ayuda a relajar los músculos y a aliviar el dolor.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Shiatsu</div>
-                    <div class="service-details">90 min - $1800</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Shiatsu</div>
+                            <div class="service-details">90 min - $1800</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica de masaje japonesa que utiliza la presión de dedos, palmas, codos y pies en puntos específicos del cuerpo para estimular el flujo de energía vital (chi) y promover el bienestar.
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Lymphatic Drainage</div>
+                            <div class="service-details">60 min $1450 - 90 min $1750</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica de masaje manual suave que estimula la circulación del sistema linfático para ayudar a eliminar toxinas, reducir la hinchazón (edema) y mejorar la circulación de líquidos en el cuerpo.
+                    </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3>Terapias exclusivas</h3>
+                <h3>Terapias Exclusivas</h3>
                 <div class="service-item">
-                    <div class="service-name">Thai Massage</div>
-                    <div class="service-details">60 min $1450 - 90 min $1750</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Thai Massage</div>
+                            <div class="service-details">60 min $1450 - 90 min $1750</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Técnica que ofrece múltiples beneficios, incluyendo el alivio del dolor muscular y articular, la mejora de la flexibilidad y el rango de movimiento, y la reducción del estrés y la ansiedad.
+                    </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-name">Hawaiian with Bamboo</div>
-                    <div class="service-details">60 min $1500 - 90 min $1800</div>
+                    <div class="service-header">
+                        <div>
+                            <div class="service-name">Hawaiian with Bamboo</div>
+                            <div class="service-details">60 min $1500 - 90 min $1800</div>
+                        </div>
+                        <span class="service-icon">▼</span>
+                    </div>
+                    <div class="service-description">
+                        Se utiliza cañas de bambú para masajear profundamente el cuerpo, aliviar tensiones, mejorar la circulación y liberar la energía, complementando la técnica del Lomi Lomi que usa movimientos fluidos y rítmicos de antebrazos para relajar mente y cuerpo.
+                    </div>
                 </div>
             </div>
         </div>
@@ -542,13 +729,13 @@
         <h2>Galería</h2>
         <div class="gallery-grid">
             <!-- 🔴 IMÁGENES 3-8: GALERÍA DE FOTOS -->
-            <!-- Cambia 'gallery1.jpg' etc. por las rutas de tus imágenes -->
-            <div class="gallery-item" style="background-image: url('gallery1.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery2.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery3.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery4.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery5.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery6.jpg');"></div>
+            <!-- Cambia 'images/gallery1.jpg' etc. por las rutas de tus imágenes -->
+            <div class="gallery-item" style="background-image: url('images/gallery1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery3.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery4.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery5.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery6.jpg');"></div>
         </div>
     </section>
 
@@ -641,6 +828,23 @@
             e.preventDefault();
             alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
             e.target.reset();
+        });
+
+        // Toggle service descriptions - usar addEventListener en lugar de onclick
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceItems = document.querySelectorAll('.service-item');
+            
+            serviceItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const description = this.querySelector('.service-description');
+                    const icon = this.querySelector('.service-icon');
+                    
+                    if (description && icon) {
+                        description.classList.toggle('active');
+                        icon.classList.toggle('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
