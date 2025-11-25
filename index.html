@@ -90,10 +90,9 @@
             margin-top: 80px;
             height: 90vh;
             /* 🔴 IMAGEN 1: FOTO PRINCIPAL DEL HERO */
-            /* Cambia 'images/hero.jpg' por la ruta de tu imagen */
-            /* Si usas URL de internet: url('https://tu-url.com/imagen.jpg') */
+            /* La imagen está en la misma carpeta que index.html */
             background: linear-gradient(rgba(122, 155, 142, 0.4), rgba(122, 155, 142, 0.4)), 
-                        url('images/hero.jpg');
+                        url('hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -177,8 +176,8 @@
             width: 100%;
             height: 400px;
             /* 🔴 IMAGEN 2: FOTO DE "SOBRE NOSOTROS" */
-            /* Cambia 'images/about.jpg' por la ruta de tu imagen */
-            background: url('images/about.jpg');
+            /* La imagen está en la misma carpeta que index.html */
+            background: url('about.png');
             background-size: cover;
             background-position: center;
             border-radius: 20px;
@@ -324,6 +323,7 @@
 
         .gallery-item {
             height: 250px;
+            /* 🔴 Las imágenes de galería se ponen individualmente en el HTML */
             background-size: cover;
             background-position: center;
             border-radius: 10px;
@@ -815,13 +815,13 @@
         <h2>Galería<span class="bilingual-subtitle">Gallery</span></h2>
         <div class="gallery-grid">
             <!-- 🔴 IMÁGENES 3-8: GALERÍA DE FOTOS -->
-            <!-- Cambia 'images/gallery1.jpg' etc. por las rutas de tus imágenes -->
-            <div class="gallery-item" style="background-image: url('images/gallery1.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('images/gallery2.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('images/gallery3.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('images/gallery4.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('images/gallery5.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('images/gallery6.jpg');"></div>
+            <!-- Las imágenes están en la misma carpeta que index.html -->
+            <div class="gallery-item" style="background-image: url('gallery1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery3.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery4.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery5.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery6.jpg');"></div>
         </div>
     </section>
 
