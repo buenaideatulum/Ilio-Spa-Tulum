@@ -184,6 +184,94 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        /* Testimonials Section */
+        #testimonios {
+            background-color: var(--cream);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--sage);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+            margin: 2rem 0 1.5rem 0;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--beige);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--beige));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: bold;
+            color: var(--dark-sage);
+            font-size: 1.1rem;
+        }
+
+        .author-location {
+            font-size: 0.9rem;
+            color: var(--dark-sage);
+            opacity: 0.8;
+        }
+
+        .testimonial-stars {
+            color: #f4b740;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
         /* Services Section */
         #servicios {
             background-color: var(--beige);
@@ -495,6 +583,7 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -532,6 +621,108 @@
             </div>
             <div class="about-image">
                 <!-- La imagen se pone en el CSS arriba, línea 188 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios">
+        <h2>Testimonios<span class="bilingual-subtitle">Testimonials</span></h2>
+        <div class="testimonials-container">
+            <!-- Testimonio 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    Experiencia increíble. El masaje de tejido profundo fue exactamente lo que necesitaba. El ambiente es muy relajante y el personal muy profesional.
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <div class="author-name">María González</div>
+                        <div class="author-location">Ciudad de México</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    Best massage I've had in Tulum! The hot stones therapy was amazing. Highly recommend for anyone visiting the area.
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">J</div>
+                    <div class="author-info">
+                        <div class="author-name">John Smith</div>
+                        <div class="author-location">New York, USA</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    El masaje prenatal fue maravilloso. Me sentí muy cuidada y relajada. Definitivamente volveré cuando regrese a Tulum.
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">A</div>
+                    <div class="author-info">
+                        <div class="author-name">Ana Martínez</div>
+                        <div class="author-location">Playa del Carmen</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 4 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    The aromatherapy massage was pure bliss. Perfect way to end our vacation in Tulum. Professional service and beautiful atmosphere.
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <div class="author-name">Sarah Johnson</div>
+                        <div class="author-location">Toronto, Canada</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 5 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    Excelente servicio. El masaje tailandés superó mis expectativas. El terapeuta fue muy atento y profesional. ¡Totalmente recomendado!
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">C</div>
+                    <div class="author-info">
+                        <div class="author-name">Carlos Ruiz</div>
+                        <div class="author-location">Monterrey, México</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 6 -->
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-text">
+                    Outstanding experience! The couples massage was perfect for our anniversary. Beautiful space and incredibly skilled therapists.
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">L</div>
+                    <div class="author-info">
+                        <div class="author-name">Laura & Mike</div>
+                        <div class="author-location">Los Angeles, USA</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -816,22 +1007,12 @@
         <div class="gallery-grid">
             <!-- 🔴 IMÁGENES 3-8: GALERÍA DE FOTOS -->
             <!-- Las imágenes están en la misma carpeta que index.html -->
-            <div class="gallery-item" style="background-image: url('gallery1.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery2.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery3.jfif');"></div>
+            <div class="gallery-item" style="background-image: url('gallery1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('gallery3.jpg');"></div>
             <div class="gallery-item" style="background-image: url('gallery4.jpg');"></div>
             <div class="gallery-item" style="background-image: url('gallery5.jpg');"></div>
             <div class="gallery-item" style="background-image: url('gallery6.jpg');"></div>
-             <div class="gallery-item" style="background-image: url('gallery7.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery8.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery9.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery10.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery11.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery12.jfif');"></div>
-             <div class="gallery-item" style="background-image: url('gallery13.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery14.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery15.jfif');"></div>
-            <div class="gallery-item" style="background-image: url('gallery16.jfif');"></div>
         </div>
     </section>
 
