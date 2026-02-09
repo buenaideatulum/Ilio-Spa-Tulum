@@ -192,16 +192,53 @@
             text-align: justify;
         }
 
-        .about-image {
+        .about-video {
             width: 100%;
             height: 400px;
-            /* 🔴 IMAGEN 2: FOTO DE "SOBRE NOSOTROS" */
-            /* La imagen está en la misma carpeta que index.html */
-            background: url('about.png');
-            background-size: cover;
-            background-position: center;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(122, 155, 142, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .about-video:hover .video-play-overlay {
+            opacity: 1;
+        }
+
+        .about-video video:not([controls]) ~ .video-play-overlay {
+            pointer-events: all;
+        }
+
+        .video-play-overlay svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+            margin-left: 5px;
         }
 
         /* Testimonials Section */
@@ -587,6 +624,10 @@
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .about-video {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -639,8 +680,17 @@
                 <p>Cada sesión es diseñada para transportarte a un estado de paz profunda, donde el tiempo se detiene y tu bienestar es nuestra prioridad.</p>
                 <p class="bilingual-text">Each session is designed to transport you to a state of deep peace, where time stands still and your well-being is our priority.</p>
             </div>
-            <div class="about-image">
-                <!-- La imagen se pone en el CSS arriba, línea 188 -->
+            <div class="about-video">
+                <!-- 🔴 VIDEO: Coloca el archivo Videomasaje.mp4 en la misma carpeta que index.html -->
+                <video id="about-video" muted loop playsinline>
+                    <source src="Videomasaje.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="video-play-overlay" id="video-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -1159,6 +1209,38 @@
 
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+        // Video autoplay and controls
+        const aboutVideo = document.getElementById('about-video');
+        const videoOverlay = document.getElementById('video-overlay');
+
+        // Autoplay video when it's in viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    aboutVideo.play().catch(err => {
+                        console.log('Autoplay prevented:', err);
+                    });
+                } else {
+                    aboutVideo.pause();
+                }
+            });
+        }, observerOptions);
+
+        videoObserver.observe(aboutVideo);
+
+        // Click overlay to toggle play/pause
+        videoOverlay.addEventListener('click', () => {
+            if (aboutVideo.paused) {
+                aboutVideo.play();
+            } else {
+                aboutVideo.pause();
+            }
         });
 
         // Reserva Ahora - WhatsApp con detección de idioma
