@@ -1077,30 +1077,10 @@
     <!-- Gallery Section -->
     <section id="galeria">
         <h2>Galería<span class="bilingual-subtitle">Gallery</span></h2>
-        <div class="gallery-grid">
-            <!-- 🔴 GALERÍA DE FOTOS -->
-            <!-- Agrega tantas fotos como quieras siguiendo este formato: -->
-            <!-- <div class="gallery-item" style="background-image: url('gallery1.jpg');"></div> -->
-            <!-- Las imágenes deben estar en la misma carpeta que index.html -->
-            <!-- Nombra tus fotos: gallery1.jpg, gallery2.jpg, gallery3.jpg, etc. -->
-            
-            <div class="gallery-item" style="background-image: url('gallery1.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery2.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery3.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery4.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery5.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery6.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery7.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery8.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery9.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery10.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery11.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('gallery12.jpg');"></div>
-            
-            <!-- Para agregar más fotos, simplemente copia y pega esta línea: -->
-            <!-- <div class="gallery-item" style="background-image: url('gallery13.jpg');"></div> -->
-            <!-- <div class="gallery-item" style="background-image: url('gallery14.jpg');"></div> -->
-            <!-- etc. -->
+        <div class="gallery-grid" id="gallery-container">
+            <!-- 🔴 GALERÍA DE FOTOS - SE CARGA AUTOMÁTICAMENTE -->
+            <!-- Nombra tus fotos: g.jpg, g1.jpg, g2.HEIC, g3.png, etc. -->
+            <!-- Soporta: JPG, JPEG, PNG, HEIC, WEBP en mayúsculas o minúsculas -->
         </div>
     </section>
 
@@ -1353,4 +1333,70 @@ ${mensaje}`;
                     const description = this.querySelector('.service-description');
                     const icon = this.querySelector('.service-icon');
                     
-                    i
+                    if (description && icon) {
+                        description.classList.toggle('active');
+                        icon.classList.toggle('active');
+                    }
+                });
+            });
+
+            // 🔴 CARGA AUTOMÁTICA DE FOTOS DE GALERÍA
+            // Busca fotos nombradas: g, g1, g2, g3, etc.
+            // Formatos soportados: .jpg, .jpeg, .png, .HEIC, .webp (mayúsculas y minúsculas)
+            const galleryContainer = document.getElementById('gallery-container');
+            let imageIndex = 0; // Empezamos con 0 para buscar "g" primero
+            let consecutiveErrors = 0;
+            const maxConsecutiveErrors = 3;
+            const imageFormats = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'HEIC', 'heic', 'webp', 'WEBP'];
+
+            function loadGalleryImage(index) {
+                let formatIndex = 0;
+                
+                function tryNextFormat() {
+                    if (formatIndex >= imageFormats.length) {
+                        // Ya probamos todos los formatos para este número
+                        consecutiveErrors++;
+                        
+                        if (consecutiveErrors < maxConsecutiveErrors) {
+                            loadGalleryImage(index + 1);
+                        }
+                        return;
+                    }
+                    
+                    const img = new Image();
+                    const format = imageFormats[formatIndex];
+                    // Si index es 0, usar "g", si no usar "g" + número
+                    const imageName = index === 0 ? `g.${format}` : `g${index}.${format}`;
+                    
+                    img.onload = function() {
+                        // La imagen existe, agregarla a la galería
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        galleryItem.style.backgroundImage = `url('${imageName}')`;
+                        galleryContainer.appendChild(galleryItem);
+                        
+                        // Resetear contador de errores
+                        consecutiveErrors = 0;
+                        
+                        // Intentar cargar la siguiente imagen
+                        loadGalleryImage(index + 1);
+                    };
+                    
+                    img.onerror = function() {
+                        // Probar con el siguiente formato
+                        formatIndex++;
+                        tryNextFormat();
+                    };
+                    
+                    img.src = imageName;
+                }
+                
+                tryNextFormat();
+            }
+
+            // Iniciar carga de imágenes desde "g"
+            loadGalleryImage(0);
+        });
+    </script>
+</body>
+</html>
